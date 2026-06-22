@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --ts --eslint --tailwind --src-dir --app --turbopack --import-alias \"@/*\" --use-npm --yes)",
+      "Read(//Users/cdistudios/Desktop/**)",
+      "Read(//Users/cdistudios/Desktop/Claude Code /FICApp/**)",
+      "Bash(mv \"/Users/cdistudios/Desktop/Claude Code /FICApp\" \"/Users/cdistudios/Desktop/Claude Code /ficapp\" && ls -la \"/Users/cdistudios/Desktop/Claude Code /ficapp\")"
+    ]
+  }
+}
