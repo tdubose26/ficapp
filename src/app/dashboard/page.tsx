@@ -9,6 +9,16 @@ export default async function DashboardPage() {
     redirect('/login')
   }
 
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('onboarding_complete')
+    .eq('id', user.id)
+    .single()
+
+  if (!profile?.onboarding_complete) {
+    redirect('/onboarding')
+  }
+
   return (
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#000', color: '#fff', padding: '2rem' }}>
       <div style={{ textAlign: 'center' }}>
