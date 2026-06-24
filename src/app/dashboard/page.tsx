@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import SignOutButton from '@/components/SignOutButton'
+import SectionCard from '@/components/SectionCard'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -27,9 +28,18 @@ export default async function DashboardPage() {
   const isAdmin = profile?.role === 'admin' || profile?.role === 'pastor'
   const greetingName = profile?.preferred_name || profile?.full_name || user.email
 
+  const sections = [
+    { href: '/bible-study', emoji: '📖', title: 'Bible Study', description: 'Grow deeper in the Word.' },
+    { href: '/flow-kids', emoji: '👶', title: 'FLOW Kids', description: 'Helping kids grow in faith.' },
+    { href: '/flow-tv', emoji: '📺', title: 'FLOW TV', description: 'Sermons and teachings.' },
+    { href: '/events', emoji: '📅', title: 'Events', description: "What's happening at FIC." },
+    { href: '/serve-teams', emoji: '🙌', title: 'Serve Teams', description: 'Find your place to serve.' },
+    { href: '/wellspring', emoji: '💧', title: 'Wellspring', description: 'Prayer and spiritual care.' },
+  ]
+
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#000', color: '#fff', padding: '2rem' }}>
-      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
           <h1 style={{ fontSize: '2rem', color: '#D0A334' }}>The FLOW</h1>
           <SignOutButton />
@@ -47,8 +57,10 @@ export default async function DashboardPage() {
           </div>
         )}
 
-        <div style={{ padding: '2rem', backgroundColor: '#1a1a1a', borderRadius: '0.5rem', border: '1px solid #333', textAlign: 'center' }}>
-          <p style={{ opacity: 0.7 }}>The main dashboard sections (Bible Study, FLOW Kids, FLOW TV, Events, Serve Teams, Wellspring) are coming next.</p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
+          {sections.map((s) => (
+            <SectionCard key={s.href} href={s.href} emoji={s.emoji} title={s.title} description={s.description} />
+          ))}
         </div>
       </div>
     </div>
