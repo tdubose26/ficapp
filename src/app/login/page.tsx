@@ -14,7 +14,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#000', color: '#fff' }}>
+    <div className="bg-background text-foreground" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ textAlign: 'center' }}>
         <h1 style={{ fontSize: '2rem', marginBottom: '1.5rem', color: '#D0A334' }}>The FLOW</h1>
         <p style={{ marginBottom: '2rem' }}>Sign in to continue</p>

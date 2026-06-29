@@ -34,7 +34,7 @@ export default function ApprovalsList({ members }: { members: Member[] }) {
 
   if (members.length === 0) {
     return (
-      <div style={{ padding: '3rem', textAlign: 'center', backgroundColor: '#1a1a1a', borderRadius: '0.5rem', border: '1px solid #333' }}>
+      <div className="bg-card text-card-foreground border border-border" style={{ padding: '3rem', textAlign: 'center', borderRadius: '0.5rem' }}>
         <p style={{ opacity: 0.7, fontSize: '1.1rem' }}>No members pending approval right now. 🎉</p>
       </div>
     )
@@ -43,7 +43,7 @@ export default function ApprovalsList({ members }: { members: Member[] }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       {members.map((m) => (
-        <div key={m.id} style={{ padding: '1.5rem', backgroundColor: '#1a1a1a', borderRadius: '0.5rem', border: '1px solid #333' }}>
+        <div key={m.id} className="bg-card text-card-foreground border border-border" style={{ padding: '1.5rem', borderRadius: '0.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
               <h3 style={{ fontSize: '1.25rem', color: '#D0A334', marginBottom: '0.25rem' }}>{m.full_name}</h3>
@@ -65,7 +65,7 @@ export default function ApprovalsList({ members }: { members: Member[] }) {
             <button onClick={() => handleApprove(m.id)} disabled={processing === m.id} style={{ flex: 1, padding: '0.75rem', backgroundColor: '#7F1519', color: '#fff', border: 'none', borderRadius: '0.5rem', cursor: processing === m.id ? 'wait' : 'pointer', fontSize: '0.95rem' }}>
               {processing === m.id ? 'Working...' : '✓ Approve'}
             </button>
-            <button onClick={() => handleReject(m.id)} disabled={processing === m.id} style={{ flex: 1, padding: '0.75rem', backgroundColor: '#333', color: '#fff', border: '1px solid #555', borderRadius: '0.5rem', cursor: processing === m.id ? 'wait' : 'pointer', fontSize: '0.95rem' }}>
+            <button onClick={() => handleReject(m.id)} disabled={processing === m.id} className="bg-muted text-foreground border border-border" style={{ flex: 1, padding: '0.75rem', borderRadius: '0.5rem', cursor: processing === m.id ? 'wait' : 'pointer', fontSize: '0.95rem' }}>
               {processing === m.id ? 'Working...' : '✕ Reject'}
             </button>
           </div>

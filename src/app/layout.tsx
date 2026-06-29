@@ -1,5 +1,12 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import { Geist, DM_Serif_Display, DM_Sans } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/theme-provider";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const dmSerifDisplay = DM_Serif_Display({weight:['400'],subsets:['latin'],variable:'--font-serif'});
+const dmSans = DM_Sans({weight:['400','500','700'],subsets:['latin'],variable:'--font-sans-flow'});
 
 export const metadata: Metadata = {
   title: 'The FLOW',
@@ -30,9 +37,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body style={{ margin: 0, padding: 0, backgroundColor: '#000', color: '#fff', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-        {children}
+    <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable, dmSerifDisplay.variable, dmSans.variable)}>
+      <body className="bg-background text-foreground">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -26,7 +26,7 @@ export default async function PendingPage() {
 
   if (profile?.approval_status === 'rejected') {
     return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#000', color: '#fff', padding: '2rem' }}>
+      <div className="bg-background text-foreground" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
         <div style={{ textAlign: 'center', maxWidth: '500px' }}>
           <h1 style={{ fontSize: '2rem', color: '#D0A334', marginBottom: '1.5rem' }}>Account Not Approved</h1>
           <p style={{ marginBottom: '2rem', opacity: 0.8 }}>Your request to join The FLOW was not approved at this time. Please reach out to a ministry leader if you have questions.</p>

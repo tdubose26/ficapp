@@ -14,8 +14,8 @@ function YesNoToggle({ label, value, onChange }: { label: string; value: boolean
     <div style={{ marginBottom: '1.5rem' }}>
       <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.95rem' }}>{label}</label>
       <div style={{ display: 'flex', gap: '0.75rem' }}>
-        <button onClick={() => onChange(true)} style={{ flex: 1, padding: '0.625rem', backgroundColor: value ? '#7F1519' : '#1a1a1a', color: '#fff', border: '1px solid #333', borderRadius: '0.5rem', cursor: 'pointer' }}>Yes</button>
-        <button onClick={() => onChange(false)} style={{ flex: 1, padding: '0.625rem', backgroundColor: !value ? '#7F1519' : '#1a1a1a', color: '#fff', border: '1px solid #333', borderRadius: '0.5rem', cursor: 'pointer' }}>No</button>
+        <button onClick={() => onChange(true)} className={value ? 'border border-border' : 'bg-card text-card-foreground border border-border'} style={{ flex: 1, padding: '0.625rem', backgroundColor: value ? '#7F1519' : undefined, color: value ? '#fff' : undefined, borderRadius: '0.5rem', cursor: 'pointer' }}>Yes</button>
+        <button onClick={() => onChange(false)} className={!value ? 'border border-border' : 'bg-card text-card-foreground border border-border'} style={{ flex: 1, padding: '0.625rem', backgroundColor: !value ? '#7F1519' : undefined, color: !value ? '#fff' : undefined, borderRadius: '0.5rem', cursor: 'pointer' }}>No</button>
       </div>
     </div>
   )
@@ -32,7 +32,7 @@ export default function Step5Notifications({ data, updateData, next, back }: Pro
       <YesNoToggle label="Push Notifications (coming soon)" value={data.push_permission} onChange={(v) => updateData({ push_permission: v })} />
 
       <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
-        <button onClick={back} style={{ flex: 1, padding: '0.875rem', backgroundColor: '#333', color: '#fff', border: 'none', borderRadius: '0.5rem', fontSize: '1rem', cursor: 'pointer' }}>Back</button>
+        <button onClick={back} className="bg-muted text-foreground" style={{ flex: 1, padding: '0.875rem', border: 'none', borderRadius: '0.5rem', fontSize: '1rem', cursor: 'pointer' }}>Back</button>
         <button onClick={next} style={{ flex: 1, padding: '0.875rem', backgroundColor: '#7F1519', color: '#fff', border: 'none', borderRadius: '0.5rem', fontSize: '1rem', cursor: 'pointer' }}>Continue</button>
       </div>
     </div>

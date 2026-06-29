@@ -50,7 +50,7 @@ export default function OnboardingWizard({ userId }: { userId: string }) {
   }
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#000', color: '#fff', padding: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div className="bg-background text-foreground" style={{ minHeight: '100vh', padding: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ maxWidth: '600px', width: '100%' }}>
         <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
           <h1 style={{ fontSize: '1.5rem', color: '#D0A334', marginBottom: '0.5rem' }}>The FLOW</h1>

@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import SignOutButton from '@/components/SignOutButton'
 import SectionCard from '@/components/SectionCard'
+import { ThemeToggle } from '@/components/theme-toggle'
+import BottomNav from '@/components/BottomNav'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -38,15 +40,18 @@ export default async function DashboardPage() {
   ]
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#000', color: '#fff', padding: '2rem' }}>
+    <div className="bg-background text-foreground min-h-screen" style={{ padding: '2rem', paddingBottom: '80px' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
-          <h1 style={{ fontSize: '2rem', color: '#D0A334' }}>The FLOW</h1>
-          <SignOutButton />
+          <h1 className="font-serif" style={{ fontSize: '2rem', color: '#D0A334' }}>The FLOW</h1>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <ThemeToggle />
+            <SignOutButton />
+          </div>
         </div>
 
         <div style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Welcome, {greetingName}</h2>
+          <h2 className="font-serif" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Welcome, {greetingName}</h2>
           <p style={{ opacity: 0.7 }}>Your home for everything at Flowing In Christ Ministries.</p>
         </div>
 
@@ -63,6 +68,7 @@ export default async function DashboardPage() {
           ))}
         </div>
       </div>
+      <BottomNav />
     </div>
   )
 }

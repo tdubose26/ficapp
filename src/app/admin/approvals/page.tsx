@@ -28,7 +28,7 @@ export default async function ApprovalsPage() {
     .order('created_at', { ascending: false })
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#000', color: '#fff', padding: '2rem' }}>
+    <div className="bg-background text-foreground min-h-screen" style={{ padding: '2rem' }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
         <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <div>

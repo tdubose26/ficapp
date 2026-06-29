@@ -22,7 +22,7 @@ export default function Step1Welcome({ data, updateData, next }: Props) {
           type="text"
           value={data.full_name}
           onChange={(e) => updateData({ full_name: e.target.value })}
-          style={{ width: '100%', padding: '0.75rem', backgroundColor: '#1a1a1a', color: '#fff', border: '1px solid #333', borderRadius: '0.5rem', fontSize: '1rem' }}
+          className="bg-card text-card-foreground border border-border" style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', fontSize: '1rem' }}
         />
       </div>
 
@@ -33,7 +33,7 @@ export default function Step1Welcome({ data, updateData, next }: Props) {
           value={data.preferred_name}
           onChange={(e) => updateData({ preferred_name: e.target.value })}
           placeholder="What should we call you?"
-          style={{ width: '100%', padding: '0.75rem', backgroundColor: '#1a1a1a', color: '#fff', border: '1px solid #333', borderRadius: '0.5rem', fontSize: '1rem' }}
+          className="bg-card text-card-foreground border border-border" style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', fontSize: '1rem' }}
         />
       </div>
 
@@ -44,14 +44,15 @@ export default function Step1Welcome({ data, updateData, next }: Props) {
           value={data.phone}
           onChange={(e) => updateData({ phone: e.target.value })}
           placeholder="555-555-5555"
-          style={{ width: '100%', padding: '0.75rem', backgroundColor: '#1a1a1a', color: '#fff', border: '1px solid #333', borderRadius: '0.5rem', fontSize: '1rem' }}
+          className="bg-card text-card-foreground border border-border" style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', fontSize: '1rem' }}
         />
       </div>
 
       <button
         onClick={next}
         disabled={!canProceed}
-        style={{ width: '100%', padding: '0.875rem', backgroundColor: canProceed ? '#7F1519' : '#333', color: '#fff', border: 'none', borderRadius: '0.5rem', fontSize: '1rem', cursor: canProceed ? 'pointer' : 'not-allowed' }}
+        className={canProceed ? '' : 'bg-muted text-muted-foreground'}
+        style={{ width: '100%', padding: '0.875rem', backgroundColor: canProceed ? '#7F1519' : undefined, color: canProceed ? '#fff' : undefined, border: 'none', borderRadius: '0.5rem', fontSize: '1rem', cursor: canProceed ? 'pointer' : 'not-allowed' }}
       >
         Continue
       </button>

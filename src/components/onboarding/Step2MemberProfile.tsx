@@ -22,7 +22,7 @@ export default function Step2MemberProfile({ data, updateData, next, back }: Pro
         <select
           value={data.ministry_status}
           onChange={(e) => updateData({ ministry_status: e.target.value })}
-          style={{ width: '100%', padding: '0.75rem', backgroundColor: '#1a1a1a', color: '#fff', border: '1px solid #333', borderRadius: '0.5rem', fontSize: '1rem' }}
+          className="bg-card text-card-foreground border border-border" style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', fontSize: '1rem' }}
         >
           <option value="">Select one...</option>
           <option value="visitor">First-Time Visitor</option>
@@ -37,7 +37,7 @@ export default function Step2MemberProfile({ data, updateData, next, back }: Pro
         <select
           value={data.household_type}
           onChange={(e) => updateData({ household_type: e.target.value })}
-          style={{ width: '100%', padding: '0.75rem', backgroundColor: '#1a1a1a', color: '#fff', border: '1px solid #333', borderRadius: '0.5rem', fontSize: '1rem' }}
+          className="bg-card text-card-foreground border border-border" style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', fontSize: '1rem' }}
         >
           <option value="">Prefer not to say</option>
           <option value="single_adult">Single Adult</option>
@@ -56,13 +56,13 @@ export default function Step2MemberProfile({ data, updateData, next, back }: Pro
           value={data.children_youth}
           onChange={(e) => updateData({ children_youth: e.target.value })}
           placeholder="e.g., 2 kids in FLOW Kids"
-          style={{ width: '100%', padding: '0.75rem', backgroundColor: '#1a1a1a', color: '#fff', border: '1px solid #333', borderRadius: '0.5rem', fontSize: '1rem' }}
+          className="bg-card text-card-foreground border border-border" style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', fontSize: '1rem' }}
         />
       </div>
 
       <div style={{ display: 'flex', gap: '1rem' }}>
-        <button onClick={back} style={{ flex: 1, padding: '0.875rem', backgroundColor: '#333', color: '#fff', border: 'none', borderRadius: '0.5rem', fontSize: '1rem', cursor: 'pointer' }}>Back</button>
-        <button onClick={next} disabled={!canProceed} style={{ flex: 1, padding: '0.875rem', backgroundColor: canProceed ? '#7F1519' : '#333', color: '#fff', border: 'none', borderRadius: '0.5rem', fontSize: '1rem', cursor: canProceed ? 'pointer' : 'not-allowed' }}>Continue</button>
+        <button onClick={back} className="bg-muted text-foreground" style={{ flex: 1, padding: '0.875rem', border: 'none', borderRadius: '0.5rem', fontSize: '1rem', cursor: 'pointer' }}>Back</button>
+        <button onClick={next} disabled={!canProceed} className={canProceed ? '' : 'bg-muted text-muted-foreground'} style={{ flex: 1, padding: '0.875rem', backgroundColor: canProceed ? '#7F1519' : undefined, color: canProceed ? '#fff' : undefined, border: 'none', borderRadius: '0.5rem', fontSize: '1rem', cursor: canProceed ? 'pointer' : 'not-allowed' }}>Continue</button>
       </div>
     </div>
   )
