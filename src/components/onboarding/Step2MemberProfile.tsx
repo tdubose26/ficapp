@@ -1,5 +1,6 @@
 'use client'
 
+import { ChevronRight } from 'lucide-react'
 import { WizardData } from './OnboardingWizard'
 
 type Props = {
@@ -9,20 +10,29 @@ type Props = {
   back: () => void
 }
 
-export default function Step2MemberProfile({ data, updateData, next, back }: Props) {
+const FIELD_LABEL_STYLE: React.CSSProperties = {
+  display: 'block',
+  marginBottom: '0.4rem',
+  fontSize: '0.7rem',
+  fontWeight: 700,
+  letterSpacing: '0.08em',
+  textTransform: 'uppercase',
+}
+const INPUT_CLASS = "bg-white border-2 border-secondary text-secondary rounded-lg w-full placeholder:text-secondary/50"
+const INPUT_STYLE: React.CSSProperties = { padding: '0.75rem 1rem', fontSize: '1rem' }
+
+export default function Step2MemberProfile({ data, updateData, next }: Props) {
   const canProceed = data.ministry_status.trim().length > 0
 
   return (
     <div>
-      <h2 style={{ fontSize: '1.75rem', color: '#D0A334', marginBottom: '1.5rem' }}>Member Profile</h2>
-      <p style={{ marginBottom: '2rem', opacity: 0.8 }}>Tell us a bit about your connection to FIC.</p>
-
-      <div style={{ marginBottom: '1.5rem' }}>
-        <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Ministry Status *</label>
+      <div style={{ marginBottom: '1rem' }}>
+        <label className="text-secondary" style={FIELD_LABEL_STYLE}>Ministry Status *</label>
         <select
           value={data.ministry_status}
           onChange={(e) => updateData({ ministry_status: e.target.value })}
-          className="bg-card text-card-foreground border border-border" style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', fontSize: '1rem' }}
+          className={INPUT_CLASS}
+          style={INPUT_STYLE}
         >
           <option value="">Select one...</option>
           <option value="visitor">First-Time Visitor</option>
@@ -32,12 +42,13 @@ export default function Step2MemberProfile({ data, updateData, next, back }: Pro
         </select>
       </div>
 
-      <div style={{ marginBottom: '1.5rem' }}>
-        <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Household Type (optional)</label>
+      <div style={{ marginBottom: '1rem' }}>
+        <label className="text-secondary" style={FIELD_LABEL_STYLE}>Household Type (optional)</label>
         <select
           value={data.household_type}
           onChange={(e) => updateData({ household_type: e.target.value })}
-          className="bg-card text-card-foreground border border-border" style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', fontSize: '1rem' }}
+          className={INPUT_CLASS}
+          style={INPUT_STYLE}
         >
           <option value="">Prefer not to say</option>
           <option value="single_adult">Single Adult</option>
@@ -49,21 +60,41 @@ export default function Step2MemberProfile({ data, updateData, next, back }: Pro
         </select>
       </div>
 
-      <div style={{ marginBottom: '2rem' }}>
-        <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Children/Youth Connected to FIC (optional)</label>
+      <div style={{ marginBottom: '0.5rem' }}>
+        <label className="text-secondary" style={FIELD_LABEL_STYLE}>Children/Youth Connected to FIC (optional)</label>
         <input
           type="text"
           value={data.children_youth}
           onChange={(e) => updateData({ children_youth: e.target.value })}
           placeholder="e.g., 2 kids in FLOW Kids"
-          className="bg-card text-card-foreground border border-border" style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', fontSize: '1rem' }}
+          className={INPUT_CLASS}
+          style={INPUT_STYLE}
         />
       </div>
 
-      <div style={{ display: 'flex', gap: '1rem' }}>
-        <button onClick={back} className="bg-muted text-foreground" style={{ flex: 1, padding: '0.875rem', border: 'none', borderRadius: '0.5rem', fontSize: '1rem', cursor: 'pointer' }}>Back</button>
-        <button onClick={next} disabled={!canProceed} className={canProceed ? '' : 'bg-muted text-muted-foreground'} style={{ flex: 1, padding: '0.875rem', backgroundColor: canProceed ? '#7F1519' : undefined, color: canProceed ? '#fff' : undefined, border: 'none', borderRadius: '0.5rem', fontSize: '1rem', cursor: canProceed ? 'pointer' : 'not-allowed' }}>Continue</button>
-      </div>
+      <button
+        onClick={next}
+        disabled={!canProceed}
+        className="bg-secondary text-white border-2 border-primary"
+        style={{
+          width: '100%',
+          marginTop: '1.25rem',
+          padding: '0.9rem 1.25rem',
+          borderRadius: '9999px',
+          fontSize: '1rem',
+          fontWeight: 600,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          cursor: canProceed ? 'pointer' : 'not-allowed',
+          opacity: canProceed ? 1 : 0.55,
+          boxShadow: canProceed ? '0 6px 18px rgba(0,0,0,0.2)' : 'none',
+        }}
+      >
+        <span style={{ width: 20 }} />
+        <span style={{ flex: 1, textAlign: 'center' }}>Continue</span>
+        <ChevronRight className="h-5 w-5" />
+      </button>
     </div>
   )
 }

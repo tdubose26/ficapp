@@ -1,5 +1,6 @@
 'use client'
 
+import { ChevronRight } from 'lucide-react'
 import { WizardData } from './OnboardingWizard'
 
 const SERVE_TEAMS = [
@@ -28,33 +29,86 @@ type Props = {
   back: () => void
 }
 
-export default function Step4ServeTeams({ data, updateData, next, back }: Props) {
+const FIELD_LABEL_STYLE: React.CSSProperties = {
+  display: 'block',
+  marginBottom: '0.4rem',
+  fontSize: '0.7rem',
+  fontWeight: 700,
+  letterSpacing: '0.08em',
+  textTransform: 'uppercase',
+}
+const INPUT_CLASS = "bg-white border-2 border-secondary text-secondary rounded-lg w-full"
+const INPUT_STYLE: React.CSSProperties = { padding: '0.75rem 1rem', fontSize: '1rem' }
+
+export default function Step4ServeTeams({ data, updateData, next }: Props) {
   const canProceed = !data.serves || (data.serves && data.preferred_serve_team.length > 0)
+
+  const toggleBase: React.CSSProperties = {
+    flex: 1,
+    padding: '0.85rem',
+    borderRadius: '0.75rem',
+    fontSize: '0.95rem',
+    fontWeight: 600,
+    cursor: 'pointer',
+  }
 
   return (
     <div>
-      <h2 style={{ fontSize: '1.75rem', color: '#D0A334', marginBottom: '1.5rem' }}>Serve Teams</h2>
-      <p style={{ marginBottom: '2rem', opacity: 0.8 }}>Are you currently serving on a team at FIC?</p>
-
-      <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
-        <button onClick={() => updateData({ serves: true })} className={data.serves ? 'border border-border' : 'bg-card text-card-foreground border border-border'} style={{ flex: 1, padding: '0.875rem', backgroundColor: data.serves ? '#7F1519' : undefined, color: data.serves ? '#fff' : undefined, borderRadius: '0.5rem', fontSize: '1rem', cursor: 'pointer' }}>Yes, I'm Serving</button>
-        <button onClick={() => updateData({ serves: false, preferred_serve_team: '' })} className={!data.serves ? 'border border-border' : 'bg-card text-card-foreground border border-border'} style={{ flex: 1, padding: '0.875rem', backgroundColor: !data.serves ? '#7F1519' : undefined, color: !data.serves ? '#fff' : undefined, borderRadius: '0.5rem', fontSize: '1rem', cursor: 'pointer' }}>Not Right Now</button>
+      <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.25rem' }}>
+        <button
+          onClick={() => updateData({ serves: true })}
+          className={data.serves ? 'bg-secondary text-white border-2 border-primary' : 'bg-white text-secondary border-2 border-secondary'}
+          style={toggleBase}
+        >
+          Yes, I&apos;m Serving
+        </button>
+        <button
+          onClick={() => updateData({ serves: false, preferred_serve_team: '' })}
+          className={!data.serves ? 'bg-secondary text-white border-2 border-primary' : 'bg-white text-secondary border-2 border-secondary'}
+          style={toggleBase}
+        >
+          Not Right Now
+        </button>
       </div>
 
       {data.serves && (
-        <div style={{ marginBottom: '2rem' }}>
-          <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Which team do you serve on? *</label>
-          <select value={data.preferred_serve_team} onChange={(e) => updateData({ preferred_serve_team: e.target.value })} className="bg-card text-card-foreground border border-border" style={{ width: '100%', padding: '0.75rem', borderRadius: '0.5rem', fontSize: '1rem' }}>
+        <div style={{ marginBottom: '0.5rem' }}>
+          <label className="text-secondary" style={FIELD_LABEL_STYLE}>Which team do you serve on? *</label>
+          <select
+            value={data.preferred_serve_team}
+            onChange={(e) => updateData({ preferred_serve_team: e.target.value })}
+            className={INPUT_CLASS}
+            style={INPUT_STYLE}
+          >
             <option value="">Select your team...</option>
             {SERVE_TEAMS.map((team) => <option key={team} value={team}>{team}</option>)}
           </select>
         </div>
       )}
 
-      <div style={{ display: 'flex', gap: '1rem' }}>
-        <button onClick={back} className="bg-muted text-foreground" style={{ flex: 1, padding: '0.875rem', border: 'none', borderRadius: '0.5rem', fontSize: '1rem', cursor: 'pointer' }}>Back</button>
-        <button onClick={next} disabled={!canProceed} className={canProceed ? '' : 'bg-muted text-muted-foreground'} style={{ flex: 1, padding: '0.875rem', backgroundColor: canProceed ? '#7F1519' : undefined, color: canProceed ? '#fff' : undefined, border: 'none', borderRadius: '0.5rem', fontSize: '1rem', cursor: canProceed ? 'pointer' : 'not-allowed' }}>Continue</button>
-      </div>
+      <button
+        onClick={next}
+        disabled={!canProceed}
+        className="bg-secondary text-white border-2 border-primary"
+        style={{
+          width: '100%',
+          marginTop: '1.25rem',
+          padding: '0.9rem 1.25rem',
+          borderRadius: '9999px',
+          fontSize: '1rem',
+          fontWeight: 600,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          cursor: canProceed ? 'pointer' : 'not-allowed',
+          opacity: canProceed ? 1 : 0.55,
+          boxShadow: canProceed ? '0 6px 18px rgba(0,0,0,0.2)' : 'none',
+        }}
+      >
+        <span style={{ width: 20 }} />
+        <span style={{ flex: 1, textAlign: 'center' }}>Continue</span>
+        <ChevronRight className="h-5 w-5" />
+      </button>
     </div>
   )
 }
