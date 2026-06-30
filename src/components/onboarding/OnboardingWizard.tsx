@@ -7,6 +7,7 @@ import Step4ServeTeams from './Step4ServeTeams'
 import Step5Notifications from './Step5Notifications'
 import Step6Complete from './Step6Complete'
 import { saveOnboarding } from '@/app/onboarding/actions'
+import Image from 'next/image'
 
 export type WizardData = {
   full_name: string
@@ -75,34 +76,8 @@ export default function OnboardingWizard({ userId }: { userId: string }) {
         backgroundColor: 'var(--secondary)',
       }}
     >
-      {/* Logo placeholder */}
-      <div
-        aria-hidden
-        style={{
-          width: 100,
-          height: 100,
-          borderRadius: '9999px',
-          backgroundImage:
-            'radial-gradient(circle at 30% 25%, var(--primary) 0%, var(--primary) 35%, var(--secondary) 100%)',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.35)',
-        }}
-      />
-
-      {/* Wordmark */}
-      <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-        <p
-          className="font-serif text-[#F7F4ED] tracking-widest"
-          style={{ fontSize: '0.85rem', lineHeight: 1.1 }}
-        >
-          FLOWING IN CHRIST
-        </p>
-        <p
-          className="font-serif text-[#F7F4ED] tracking-widest"
-          style={{ fontSize: '0.65rem', marginTop: '0.2rem' }}
-        >
-          MINISTRIES
-        </p>
-      </div>
+      {/* Logo */}
+      <Image src="/Flowlogoofficial.svg" alt="Flowing In Christ Ministries" width={100} height={100} priority />
 
       {/* Step header */}
       <div style={{ textAlign: 'center', marginTop: '1.5rem', maxWidth: 520 }}>

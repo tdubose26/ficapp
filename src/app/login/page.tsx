@@ -2,6 +2,7 @@
 
 import { createClient } from '@/lib/supabase/client'
 import { ChevronRight, Users, Shield, Heart } from 'lucide-react'
+import Image from 'next/image'
 
 export default function LoginPage() {
   const handleGoogleLogin = async () => {
@@ -28,34 +29,9 @@ export default function LoginPage() {
         backgroundColor: 'var(--secondary)',
       }}
     >
-      {/* Logo placeholder */}
-      <div
-        aria-hidden
-        style={{
-          width: 140,
-          height: 140,
-          borderRadius: '9999px',
-          backgroundImage:
-            'radial-gradient(circle at 30% 25%, var(--primary) 0%, var(--primary) 35%, var(--secondary) 100%)',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.35)',
-          marginTop: '1rem',
-        }}
-      />
-
-      {/* Wordmark */}
-      <div style={{ textAlign: 'center', marginTop: '1.25rem' }}>
-        <p
-          className="font-serif text-[#F7F4ED] tracking-widest"
-          style={{ fontSize: '0.95rem', lineHeight: 1.1 }}
-        >
-          FLOWING IN CHRIST
-        </p>
-        <p
-          className="font-serif text-[#F7F4ED] tracking-widest"
-          style={{ fontSize: '0.7rem', marginTop: '0.25rem' }}
-        >
-          MINISTRIES
-        </p>
+      {/* Logo */}
+      <div style={{ marginTop: '1rem' }}>
+        <Image src="/Flowlogoofficial.svg" alt="Flowing In Christ Ministries" width={140} height={140} priority />
       </div>
 
       {/* Heading */}

@@ -14,6 +14,7 @@ import {
   Shield,
 } from 'lucide-react'
 import BottomNav from '@/components/BottomNav'
+import Image from 'next/image'
 
 const FILTERS = [
   { label: 'This Week', active: true },
@@ -109,17 +110,7 @@ export default async function DashboardPage() {
       <div style={{ maxWidth: 720, margin: '0 auto' }}>
         {/* Top row: logo + bell */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div
-            aria-hidden
-            style={{
-              width: 50,
-              height: 50,
-              borderRadius: '9999px',
-              backgroundImage:
-                'radial-gradient(circle at 30% 25%, var(--primary) 0%, var(--primary) 35%, var(--secondary) 100%)',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
-            }}
-          />
+          <Image src="/Flowlogoofficial.svg" alt="Flowing In Christ Ministries" width={50} height={50} priority />
           <button
             type="button"
             aria-label="Notifications"

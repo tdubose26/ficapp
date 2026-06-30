@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Shield, Bell } from 'lucide-react'
 import BottomNav from '@/components/BottomNav'
+import Image from 'next/image'
 
 const LABEL_STYLE: React.CSSProperties = {
   display: 'block',
@@ -54,18 +55,8 @@ export default function WellspringPage() {
         alignItems: 'center',
       }}
     >
-      {/* Logo placeholder */}
-      <div
-        aria-hidden
-        style={{
-          width: 60,
-          height: 60,
-          borderRadius: '9999px',
-          backgroundImage:
-            'radial-gradient(circle at 30% 25%, var(--primary) 0%, var(--primary) 35%, var(--secondary) 100%)',
-          boxShadow: '0 6px 20px rgba(0,0,0,0.3)',
-        }}
-      />
+      {/* Logo */}
+      <Image src="/Flowlogoofficial.svg" alt="Flowing In Christ Ministries" width={60} height={60} priority />
 
       {/* Heading */}
       <div style={{ textAlign: 'center', marginTop: '1.25rem' }}>

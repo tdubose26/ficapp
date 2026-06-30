@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function SplashPage() {
   return (
@@ -15,39 +16,15 @@ export default function SplashPage() {
         backgroundColor: 'var(--secondary)',
       }}
     >
-      <div
-        aria-hidden
-        style={{
-          width: 200,
-          height: 200,
-          borderRadius: '9999px',
-          backgroundImage:
-            'radial-gradient(circle at 30% 25%, var(--primary) 0%, var(--primary) 35%, var(--secondary) 100%)',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.35)',
-          marginTop: '2rem',
-        }}
-      />
-
-      <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-        <p
-          className="font-serif text-secondary tracking-widest"
-          style={{ fontSize: '1rem', lineHeight: 1.1 }}
-        >
-          FLOWING IN CHRIST
-        </p>
-        <p
-          className="font-serif text-secondary tracking-widest"
-          style={{ fontSize: '0.75rem', marginTop: '0.25rem' }}
-        >
-          MINISTRIES
-        </p>
+      <div style={{ marginTop: '2rem' }}>
+        <Image src="/Flowlogoofficial.svg" alt="Flowing In Christ Ministries" width={200} height={200} priority />
       </div>
 
       <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-        <h1 className="font-serif text-secondary text-3xl">
+        <h1 className="font-serif text-[#F7F4ED] text-3xl">
           Welcome to The FLOW
         </h1>
-        <p className="text-muted-foreground" style={{ marginTop: '0.5rem', fontSize: '0.95rem' }}>
+        <p className="text-[#F7F4ED]" style={{ marginTop: '0.5rem', fontSize: '0.95rem' }}>
           Flowing In Christ Ministries
         </p>
       </div>

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   Heart,
   Users,
@@ -61,18 +62,7 @@ export default function AdminDashboardPage() {
       <div style={{ maxWidth: 720, margin: '0 auto' }}>
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.875rem', padding: '0 1.5rem' }}>
-          <div
-            aria-hidden
-            style={{
-              width: 50,
-              height: 50,
-              borderRadius: '9999px',
-              backgroundImage:
-                'radial-gradient(circle at 30% 25%, var(--primary) 0%, var(--primary) 35%, var(--secondary) 100%)',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
-              flexShrink: 0,
-            }}
-          />
+          <Image src="/Flowlogoofficial.svg" alt="Flowing In Christ Ministries" width={50} height={50} priority style={{ flexShrink: 0 }} />
           <div>
             <h1 className="font-serif text-[#F7F4ED] text-4xl" style={{ lineHeight: 1 }}>Admin</h1>
             <p className="text-[#F7F4ED]" style={{ fontSize: '0.85rem', opacity: 0.85, marginTop: '0.3rem' }}>
