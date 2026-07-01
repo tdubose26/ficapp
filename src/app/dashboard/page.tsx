@@ -82,16 +82,12 @@ export default async function DashboardPage() {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('onboarding_complete, approval_status, role, full_name, preferred_name')
+    .select('onboarding_complete, role, full_name, preferred_name')
     .eq('id', user.id)
     .single()
 
   if (!profile?.onboarding_complete) {
     redirect('/onboarding')
-  }
-
-  if (profile?.approval_status !== 'approved') {
-    redirect('/pending')
   }
 
   const greetingName = profile?.preferred_name || profile?.full_name || user.email

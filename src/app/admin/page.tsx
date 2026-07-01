@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { createClient } from '@/lib/supabase/server'
+import { redirect } from 'next/navigation'
 import {
   Heart,
   Users,
@@ -47,7 +49,24 @@ const ACTIONS = [
   },
 ]
 
-export default function AdminDashboardPage() {
+export default async function AdminDashboardPage() {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  if (!user) {
+    redirect('/login')
+  }
+
+  const { data: myProfile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single()
+
+  if (myProfile?.role !== 'admin' && myProfile?.role !== 'pastor') {
+    redirect('/dashboard')
+  }
+
   return (
     <div
       className="text-foreground"

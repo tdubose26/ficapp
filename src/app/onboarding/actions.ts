@@ -28,6 +28,7 @@ export async function saveOnboarding(formData: {
     .update({
       ...formData,
       onboarding_complete: true,
+      approval_status: 'approved',
       updated_at: new Date().toISOString(),
     })
     .eq('id', user.id)

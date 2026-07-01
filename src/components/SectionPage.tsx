@@ -20,16 +20,12 @@ export default async function SectionPage({ emoji, title, description, comingSoo
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('onboarding_complete, approval_status')
+    .select('onboarding_complete')
     .eq('id', user.id)
     .single()
 
   if (!profile?.onboarding_complete) {
     redirect('/onboarding')
-  }
-
-  if (profile?.approval_status !== 'approved') {
-    redirect('/pending')
   }
 
   return (
